@@ -1,0 +1,21 @@
+body, html {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+#countdown {
+    text-align: center;
+}
+
+.time {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 10px;
+    background: #333;
+    color: #fff;
+    border-radius: 5px;
+}
