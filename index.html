@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Countdown Timer</title>
     <style>
-        body, html {
+        html,
+        body {
             margin: 0;
             padding: 0;
             width: 100%;
@@ -18,23 +20,34 @@
         }
 
         #countdown {
-            text-align: center;
             display: flex;
-            flex-direction: row; /* Align items horizontally */
+            flex-direction: row;
+            /* Ensure items are laid out horizontally */
             justify-content: center;
             align-items: center;
+            flex-wrap: nowrap;
+            /* Prevent items from wrapping */
         }
 
         .time {
             margin: 10px;
             padding: 20px;
-            background: #128529;
+            background: #333;
             color: #fff;
             border-radius: 5px;
-            font-size: 2rem; /* Increased font size for better visibility */
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 600px) {
+            .time {
+                padding: 10px;
+                font-size: 1rem;
+                /* Smaller font size */
+            }
         }
     </style>
 </head>
+
 <body>
     <div id="countdown">
         <div id="days" class="time"></div>
@@ -68,4 +81,5 @@
         const x = setInterval(updateCountdown, 1000);
     </script>
 </body>
+
 </html>
