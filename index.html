@@ -2,8 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Countdown Timer</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        #countdown {
+            text-align: center;
+            display: flex;
+            flex-direction: row; /* Align items horizontally */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .time {
+            margin: 10px;
+            padding: 20px;
+            background: #128529;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 2rem; /* Increased font size for better visibility */
+        }
+    </style>
 </head>
 <body>
     <div id="countdown">
@@ -12,6 +42,30 @@
         <div id="minutes" class="time"></div>
         <div id="seconds" class="time"></div>
     </div>
-    <script src="script.js"></script>
+    <script>
+        function updateCountdown() {
+            const countdownDate = new Date("April 26, 2025").getTime();
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days + " Days";
+            document.getElementById("hours").innerText = hours + " Hours";
+            document.getElementById("minutes").innerText = minutes + " Minutes";
+            document.getElementById("seconds").innerText = seconds + " Seconds";
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "EXPIRED";
+            }
+        }
+
+        updateCountdown();
+        const x = setInterval(updateCountdown, 1000);
+    </script>
 </body>
 </html>
